@@ -21,6 +21,9 @@ class KindleSpider(scrapy.Spider):
         next_page_url = response.xpath('//ul[@class = "a-pagination"]'
             '//li[@class = "a-last"]/a/@href').get()
 
+        if next_page_url is not None:
+            yield scrapy.Request(repsonse.urljoin(next_page_url))
+
 
     def parse_book(self, response):
         book_info = BookItem()
