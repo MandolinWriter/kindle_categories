@@ -22,7 +22,7 @@ class KindleSpider(scrapy.Spider):
             '//li[@class = "a-last"]/a/@href').get()
 
         if next_page_url is not None:
-            yield scrapy.Request(repsonse.urljoin(next_page_url))
+            yield scrapy.Request(response.urljoin(next_page_url))
 
 
     def parse_book(self, response):
